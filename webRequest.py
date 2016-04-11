@@ -2,15 +2,21 @@ import urllib2
 import requests
 from HTMLParser import HTMLParser
 def main():
-	email= "uremail"
-	passwd= "urpass"
-	allhtml = readHTML(email,passwd)
-	codehtml = parser(HTMLParser, allhtml)
-	caesarCiph()
+	count = 0
+	while(count < 6): #arbituary  number
+		email= "uremail"
+		passwd= "urpass"
+		allhtml = readHTML(email,passwd)
+		codehtml = parser(HTMLParser, allhtml)
+		caesarCiph(codehtml[0],email,count) #caesarcipher code SHOULD be in the first section. no guaruntees
+		count+=1
+		time.sleep(1810) #waits 30  mins and 10 seconds
+	
+		
 #manually enter your email and password before you run it
 #r = requests.get('http://game.hackdfw.com/play/puzzles',auth=('username/email','pass'))
 
-#retrieves the html from the webpage using urllib
+#retrieve the html from the webpage using urllib
 def readHTML(email,passwd):
 	feed = urllib.urlopen('http://game.hackdfw.com/play/puzzles',auth=(email,passwd))
 	html = feed.read()
